@@ -2,7 +2,7 @@ async function loadAdminFooter() {
   const container = document.getElementById('app-footer');
   if (!container) return;
   try {
-    const res = await fetch('/static/common/footer.html?v=3');
+    const res = await fetch('/static/common/footer.html?v=4');
     if (!res.ok) return;
     container.innerHTML = await res.text();
   } catch (e) {

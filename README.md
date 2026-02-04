@@ -115,10 +115,43 @@ enable_files = true
 grok2api-rs/
 ├─ grok2api-rs            # 可执行文件
 └─ data/
-   ├─ config.toml         # 配置文件
-   ├─ token.json          # Token 号池
+   ├─ config.toml         # 配置文件(手工创建，直接复制上给出的模版)
+   ├─ token.json          # Token 号池(导入后自动创建)
    └─ curl-impersonate    # curl-impersonate 可执行文件（或放入系统 PATH）
 ```
+
+### 项目编译教程（命令行）
+
+```bash
+# 常规 release 构建
+cargo build --release
+
+# 静态 musl 构建（需要 cargo-zigbuild 和 zig）
+cargo zigbuild --release --target x86_64-unknown-linux-musl
+```
+
+### 二进制文件部署教程（命令行）
+
+```bash
+# 1) 准备目录
+mkdir -p grok2api-rs/data
+
+# 2) 配置文件
+cp config.defaults.toml grok2api-rs/data/config.toml
+
+# 3) Token 号池
+cp /path/to/token.json grok2api-rs/data/token.json
+
+# 4) curl-impersonate 可执行文件
+cp /path/to/curl_chrome116 grok2api-rs/data/curl-impersonate
+chmod +x grok2api-rs/data/curl-impersonate
+
+# 5) 启动服务（根据实际路径修改 curl_path）
+chmod +x grok2api-rs/grok2api-rs
+SERVER_HOST=0.0.0.0 SERVER_PORT=8000 ./grok2api-rs/grok2api-rs
+```
+
+> 确保 `data/config.toml` 中的 `grok.curl_path` 指向实际可执行文件路径。
 
 ## 3. 与原项目相比缺失的内容
 
