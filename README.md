@@ -106,8 +106,8 @@ IMAGE=ghcr.io/xeanyu/grok2api-rs:v0.2.0 docker compose up -d
 
 仓库已包含 `.github/workflows/docker-publish.yml`：
 
-- push 到 `main`：发布 `ghcr.io/<owner>/grok2api-rs:latest`
-- push tag（例如 `v0.2.0`）：发布同名 tag 镜像
+- push 到 `main`：发布 `ghcr.io/xeanyu/grok2api-rs:latest`
+- push tag（例如 `v0.2.0`）：发布 `ghcr.io/xeanyu/grok2api-rs:v0.2.0` 等同名 tag 镜像
 - 多架构：`linux/amd64` + `linux/arm64`
 
 ## 编译
