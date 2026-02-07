@@ -96,7 +96,7 @@ docker build -t grok2api-rs:local .
 IMAGE=grok2api-rs:local docker compose up -d
 ```
 
-### 3) 使用 v0.2.0 镜像升级
+### 3) 使用最新镜像升级
 
 ```bash
 docker pull ghcr.io/xeanyu/grok2api-rs:latest
